@@ -6,12 +6,16 @@ data = DataHelper.read_data('./train.csv')
 
 count = {}
 
+#This is just whatever left-hand side you want
+left_index = 'Country (mentioned)'
+#left_index = 'Source'
+
 for index, row in data.iterrows():
-    if(row['Source'] not in count.keys()):
-        count[row['Source']] = {0:0, 1:0, 2:0, 3:0}
-        count[row['Source']][row['Label']] += 1
+    if(row[left_index] not in count.keys()):
+        count[row[left_index]] = {0:0, 1:0, 2:0, 3:0}
+        count[row[left_index]][row['Label']] += 1
     else:
-        count[row['Source']][row['Label']] += 1
+        count[row[left_index]][row['Label']] += 1
 
 count_percentage = {}
 
