@@ -18,7 +18,7 @@ def test_with_training(predictions, min_rnge, max_rnge):
     
     print(table)
 
-def too_many_ones(predictions, min_rnge, max_rnge):
+def too_many_ones(predictions, min_rnge, max_rnge, value):
     
     training_data = DataHelper.read_data(training_name)
     
@@ -27,10 +27,10 @@ def too_many_ones(predictions, min_rnge, max_rnge):
     
     for i in range(min_rnge, max_rnge):
         
-        if(predictions[i-min_rnge] == 1):
+        if(predictions[i-min_rnge] == value):
             retrieved_ones += 1
         
-        if(training_data.loc[i, 'Label'] == 1):
+        if(training_data.loc[i, 'Label'] == value):
             expected_ones += 1
     
     if(retrieved_ones > expected_ones):

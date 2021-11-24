@@ -5,6 +5,11 @@ BAG OF WORDS IMPLEMENTATION (BASIC)
  -- Creates the BOW vector from training data
  -- Grabs the BOW feature vector from testing data
  -- Uses KNN with a few distance metrics to determine closes neighbors
+ 
+ --IMPORTANT--
+ -- THIS WAS NOT USED IN OUR FINAL IMPLEMENTATION OF OUR PROJECT
+ -- IT IS SIMPLY A DEMONSTRATION OF WHAT COULD BE ADDED TO OUR
+ -- MODEL IF PROPERLY EXECUTED ON THE LINKS GIVEN IN THE DATASET
 
 '''
 
