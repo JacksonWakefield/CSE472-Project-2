@@ -35,9 +35,11 @@ def get_training_vector(data_raw):
     
     string_freq = {}
     
+    other_stopwords = ['coronavirus', 'corona', 'virus']
+    
     for word in string_split:
         
-        if(word in set(stopwords.words('english'))):
+        if(word in set(stopwords.words('english')) or word in other_stopwords):
             continue
         
         if word in string_freq.keys():
@@ -55,22 +57,30 @@ def get_training_vector(data_raw):
     
     index = 0
     
-    for claim in data_mod:
+    for i in range(len(data_mod)):
         
-        claim_mod = claim
+        claim_mod = data_mod.loc[i, 'Claim']
         claim_mod = claim_mod.lower()
         claim_mod = re.sub(r'\W', ' ', claim_mod)
         claim_mod = re.sub(r'\s+', ' ', claim_mod)
         
         claim_split = claim_mod.split(' ')
         
-        training_vector[index] = np.zeros([1, len(training_vector.index)])
+        vector_individual = {}
         
-        '''for word in claim_split:
-            try:
-                training_vector.at[index, word]
-            except:
-                '''''''''
+        for col in training_vector:
+            vector_individual[col] = 0
+            
+        for word in claim_split:
+            if(word in vector_individual.keys()):
+                vector_individual[word] += 1
+            else:
+                #print('SKIPPED: ' + word)
+                continue
+        
+        #training_vector = vector_individual
+        print(vector_individual)
+                
         
         index = index + 1
         
